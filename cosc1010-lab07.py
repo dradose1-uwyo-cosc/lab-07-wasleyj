@@ -1,8 +1,8 @@
-# Your Name Here
+# Wesley Jones
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 10/28/2024
+# Lab 07
+# Lab Section: 14
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -16,8 +16,15 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
+import math
+while True:
+    upper_bound = input("Please enter a numerical upper bound:")
+    if upper_bound.isdigit():
+        factorial = math.factorial(int(upper_bound))
+        break
+    else:
+        print("You entered a negative number or a alphebetic charactor or symbol, try again")
 
-factorial = 1
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,8 +43,20 @@ print("*"*75)
     # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
+num_sum = 0
+while True:
+    usr_number = input("Type a number you would like to add: (type 'exit' to calculate total sum of entered numbers)")
+    if usr_number.lower() == "exit":
+        break
+    elif usr_number.isnumeric():
+        num_sum += int(usr_number)
+    elif "-" in usr_number:
+        neg_usr_number = usr_number.replace("-","0")
+        if neg_usr_number.isnumeric():
+            num_sum -= int(neg_usr_number)
+    else:
+        print("Typed something other than a number!")
 
-num_sum = 0 
 
 print(f"Your final sum is {num_sum}")
 
@@ -58,5 +77,25 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
-        
+Answer = 0
+while True:
+    usr_problem = input("Please enter a simple math equation with only 2 variables:(Type exit to end the program)\n")
+    if usr_problem.lower() == "exit":
+        break
+    if "-" in usr_problem:
+        usr_problem.split("-")
+        answer = int(usr_problem[0]) - int(usr_problem[-1])
+    if "+" in usr_problem:
+        usr_problem.split("+")
+        answer = int(usr_problem[0]) + int(usr_problem[-1])
+    if "*" in usr_problem:
+        usr_problem.split("*")
+        answer = int(usr_problem[0]) * int(usr_problem[-1])
+    if "/" in usr_problem:
+        usr_problem.split("/")
+        answer = int(usr_problem[0]) / int(usr_problem[-1])
+    if "%" in usr_problem:
+        usr_problem.split("%")
+        answer = int(usr_problem[0]) % int(usr_problem[-1])
+    print(f"Your answer is:\n{answer}")
+    print("*"*75)       
